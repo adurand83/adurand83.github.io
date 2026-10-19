@@ -3,39 +3,49 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
 <title>Alexis Durand</title>
 <meta name="description" content="Alexis Durand — étudiant-chercheur en génie mécanique, ÉTS Montréal.">
 <style>
+  *{box-sizing:border-box}
   body{
-    margin:0; padding:12vh 24px 48px;
-    background:#fff; color:#111;
-    font:17px/1.6 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+    padding:32px 20px; background:#fff; color:#111;
+    font:16px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
-  main{max-width:520px; margin:0 auto}
-  h1{font-size:22px; font-weight:bold; margin:0}
-  p{margin:0 0 28px; color:#555}
-  ul{list-style:none; margin:0; padding:0}
-  li{margin:4px 0}
-  a{color:#111; text-decoration:underline; text-underline-offset:3px}
-  a:hover{color:#0645ad}
-  @media (prefers-color-scheme: dark){
-    body{background:#111; color:#eee}
-    p{color:#aaa}
-    a{color:#eee}
-    a:hover{color:#8ab4f8}
+  main{width:100%; max-width:380px}
+  h1{font-size:30px; font-weight:bold; letter-spacing:-.01em; margin:0}
+  .role{margin:6px 0 0; color:#666}
+  hr{border:0; border-top:2px solid #111; width:32px; margin:22px 0 26px}
+  .links{display:grid; gap:10px}
+  .btn{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:13px 16px; border:1px solid #d6d6d6; border-radius:6px;
+    color:#111; text-decoration:none; background:#fff;
+    transition:border-color .15s, background .15s, color .15s;
   }
+  .btn:hover{border-color:#111}
+  .btn .arrow{color:#999; transition:transform .15s, color .15s}
+  .btn:hover .arrow{transform:translateX(3px); color:#111}
+  .btn.primary{background:#111; border-color:#111; color:#fff}
+  .btn.primary .arrow{color:#aaa}
+  .btn.primary:hover{background:#333}
+  .btn.primary:hover .arrow{color:#fff}
+  footer{margin-top:28px; font-size:13px; color:#999}
 </style>
 </head>
 <body>
 <main>
   <h1>Alexis Durand</h1>
-  <p>Étudiant-chercheur en génie mécanique, ÉTS Montréal</p>
-  <ul>
-    <li><a href="mailto:durand.alexis83@gmail.com">durand.alexis83@gmail.com</a></li>
-    <li><a href="cv-alexis-durand.pdf" target="_blank" rel="noopener">CV (PDF)</a></li>
-    <li><a href="https://www.linkedin.com/in/alexis-durand-3a077123a/" target="_blank" rel="noopener">LinkedIn</a></li>
-    <li><a href="https://github.com/adurand83" target="_blank" rel="noopener">GitHub</a></li>
-  </ul>
+  <p class="role">Étudiant-chercheur en génie mécanique<br>ÉTS Montréal</p>
+  <hr>
+  <div class="links">
+    <a class="btn primary" href="mailto:durand.alexis83@gmail.com"><span>M'écrire</span><span class="arrow">→</span></a>
+    <a class="btn" href="cv-alexis-durand.pdf" target="_blank" rel="noopener"><span>Voir mon CV</span><span class="arrow">→</span></a>
+    <a class="btn" href="https://www.linkedin.com/in/alexis-durand-3a077123a/" target="_blank" rel="noopener"><span>LinkedIn</span><span class="arrow">→</span></a>
+    <a class="btn" href="https://github.com/adurand83" target="_blank" rel="noopener"><span>GitHub</span><span class="arrow">→</span></a>
+  </div>
+  <footer>durand.alexis83@gmail.com · Montréal</footer>
 </main>
 </body>
 </html>
