@@ -3,309 +3,53 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Alexis Durand — CND ultrasons & IA</title>
-<meta name="description" content="Alexis Durand, étudiant-chercheur en génie mécanique (ÉTS Montréal / Arts et Métiers) : contrôle non destructif par ultrasons, imagerie TFM et intelligence artificielle.">
-<meta property="og:title" content="Alexis Durand — CND ultrasons & IA">
-<meta property="og:description" content="Étudiant-chercheur au laboratoire PULETS (ÉTS Montréal). Imagerie TFM, FMC, débruitage par U-Net.">
-<meta property="og:type" content="profile">
+<title>Alexis Durand</title>
+<meta name="description" content="Alexis Durand — étudiant-chercheur en génie mécanique, ÉTS Montréal.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230f3d3e'/><text x='16' y='22' font-family='Georgia' font-size='16' fill='%23f3efe6' text-anchor='middle'>AD</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#f6f3ec; --surface:#fffdf8; --ink:#1b1f1e; --muted:#5d6461; --line:#e2ddd1;
-    --accent:#0f6b67; --accent-soft:#dcebe8; --warm:#b5532b;
-    --maxw:960px;
-  }
+  :root{ --bg:#f6f3ec; --surface:#fffdf8; --ink:#1b1f1e; --muted:#5d6461; --line:#e2ddd1; --accent:#0f6b67; }
   @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --bg:#111514; --surface:#171c1b; --ink:#e9e6df; --muted:#9aa29f; --line:#2a3130;
-      --accent:#5fc2b9; --accent-soft:#1b302e; --warm:#e08a63;
-    }
+    :root:not([data-theme="light"]){ --bg:#111514; --surface:#171c1b; --ink:#e9e6df; --muted:#9aa29f; --line:#2a3130; --accent:#5fc2b9; }
   }
-  :root[data-theme="dark"]{
-    --bg:#111514; --surface:#171c1b; --ink:#e9e6df; --muted:#9aa29f; --line:#2a3130;
-    --accent:#5fc2b9; --accent-soft:#1b302e; --warm:#e08a63;
-  }
+  :root[data-theme="dark"]{ --bg:#111514; --surface:#171c1b; --ink:#e9e6df; --muted:#9aa29f; --line:#2a3130; --accent:#5fc2b9; }
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-  a{color:var(--accent);text-decoration:none}
-  a:hover{text-decoration:underline}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
-
-  /* Navigation */
-  nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px;gap:12px}
-  nav .brand{font-family:Fraunces,Georgia,serif;font-weight:600;color:var(--ink)}
-  nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0;font-size:14px}
-  nav ul a{color:var(--muted)}
-  nav ul a:hover{color:var(--ink);text-decoration:none}
-  .theme{background:none;border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:4px 9px;cursor:pointer;font-size:14px}
-  @media (max-width:680px){ nav ul{display:none} }
-
-  /* Hero */
-  header.hero{padding:72px 0 56px;position:relative;overflow:hidden}
-  .hero svg.waves{position:absolute;right:-40px;top:20px;width:520px;max-width:70%;opacity:.55;pointer-events:none}
-  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--accent);letter-spacing:.04em}
-  h1{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(40px,7vw,68px);line-height:1.02;margin:10px 0 18px;letter-spacing:-.02em}
-  .lede{font-size:clamp(17px,2.2vw,20px);color:var(--muted);max-width:600px;margin:0 0 28px}
-  .lede strong{color:var(--ink);font-weight:500}
-  .actions{display:flex;flex-wrap:wrap;gap:10px}
-  .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-weight:500;font-size:15px}
-  .btn:hover{text-decoration:none;border-color:var(--accent)}
-  .btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
-  .btn svg{width:17px;height:17px;flex:none}
-  .loc{margin-top:22px;font-size:14px;color:var(--muted)}
-
-  /* Sections */
-  section{padding:48px 0;border-top:1px solid var(--line)}
-  h2{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:28px;margin:0 0 24px;letter-spacing:-.01em}
-  h2 small{display:block;font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--muted);font-weight:400;letter-spacing:.06em;margin-bottom:6px}
-
-  /* Research highlight */
-  .research{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:28px}
-  .research h3{font-size:20px;margin:0 0 6px}
-  .research p.sub{color:var(--muted);margin:0 0 22px}
-  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
-  .stat{background:var(--accent-soft);border-radius:12px;padding:14px}
-  .stat b{display:block;font-family:Fraunces,Georgia,serif;font-size:28px;font-weight:600;color:var(--accent);line-height:1.1}
-  .stat span{font-size:13px;color:var(--muted)}
-  @media (max-width:680px){ .stats{grid-template-columns:repeat(2,1fr)} }
-  ul.points{margin:0;padding-left:20px}
-  ul.points li{margin:6px 0}
-  .gloss{margin-top:18px;font-size:13.5px;color:var(--muted);border-top:1px dashed var(--line);padding-top:14px}
-  .gloss b{color:var(--ink);font-weight:500}
-
-  /* Timeline */
-  .item{display:grid;grid-template-columns:150px 1fr;gap:20px;padding:16px 0}
-  .item + .item{border-top:1px solid var(--line)}
-  .when{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--muted);padding-top:3px}
-  .item h3{margin:0;font-size:17px}
-  .item .org{color:var(--muted);font-size:15px;margin:2px 0 6px}
-  .item p{margin:4px 0}
-  @media (max-width:600px){ .item{grid-template-columns:1fr;gap:4px} }
-
-  /* Skills */
-  .skills{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-  @media (max-width:600px){ .skills{grid-template-columns:1fr} }
-  .skills h4{margin:0 0 8px;font-size:14px;color:var(--muted);font-weight:500}
-  .tags{display:flex;flex-wrap:wrap;gap:6px}
-  .tag{font-size:13.5px;padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface)}
-
-  .langs{display:flex;flex-wrap:wrap;gap:28px}
-  .langs div b{display:block}
-  .langs div span{color:var(--muted);font-size:14px}
-
-  /* Contact */
-  .contact{background:var(--ink);color:var(--bg);border-radius:16px;padding:32px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px}
-  .contact h2{margin:0 0 4px;color:var(--bg)}
-  .contact p{margin:0;opacity:.75}
-  .contact .btn{background:transparent;color:var(--bg);border-color:color-mix(in srgb,var(--bg) 35%,transparent)}
-  .contact .btn.primary{background:var(--bg);color:var(--ink);border-color:var(--bg)}
-  footer{padding:28px 0 48px;color:var(--muted);font-size:13px}
+  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
+       background:var(--bg);color:var(--ink);font:16px/1.5 Inter,system-ui,sans-serif;padding:24px 16px}
+  main{width:100%;max-width:420px;text-align:center}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:44px;line-height:1.05;margin:0 0 10px;letter-spacing:-.02em}
+  p{margin:0 0 32px;color:var(--muted)}
+  .links{display:flex;flex-direction:column;gap:10px}
+  a.btn{display:flex;align-items:center;justify-content:center;gap:10px;padding:14px 18px;border-radius:12px;
+        border:1px solid var(--line);background:var(--surface);color:var(--ink);text-decoration:none;font-weight:500}
+  a.btn:hover{border-color:var(--accent)}
+  a.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+  a.btn svg{width:18px;height:18px;flex:none}
 </style>
 </head>
 <body>
-
-<nav>
-  <div class="wrap">
-    <a class="brand" href="#">Alexis Durand</a>
-    <ul>
-      <li><a href="#recherche">Recherche</a></li>
-      <li><a href="#experience">Expérience</a></li>
-      <li><a href="#formation">Formation</a></li>
-      <li><a href="#competences">Compétences</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <button class="theme" id="themeBtn" aria-label="Changer le thème">◐</button>
+<main>
+  <h1>Alexis Durand</h1>
+  <p>Étudiant-chercheur en génie mécanique · ÉTS Montréal</p>
+  <div class="links">
+    <a class="btn primary" href="mailto:durand.alexis83@gmail.com">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+      M'écrire
+    </a>
+    <a class="btn" href="cv-alexis-durand.pdf" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8l-5-5Z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>
+      Voir mon CV
+    </a>
+    <a class="btn" href="https://www.linkedin.com/in/alexis-durand-3a077123a/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.6 8.65 22 11.3 22 14.7V21h-4v-5.6c0-1.34-.03-3.06-1.86-3.06-1.87 0-2.15 1.46-2.15 2.96V21h-4V9Z"/></svg>
+      LinkedIn
+    </a>
+    <a class="btn" href="https://github.com/adurand83" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.23c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.49v-1.7c-2.78.62-3.37-1.37-3.37-1.37-.46-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.35 1.12 2.92.85.09-.66.35-1.12.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.64 1.03 2.76 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9v2.82c0 .27.18.6.69.49A10.2 10.2 0 0 0 22 12.23C22 6.58 17.52 2 12 2Z"/></svg>
+      GitHub
+    </a>
   </div>
-</nav>
-
-<header class="hero">
-  <div class="wrap">
-    <svg class="waves" viewBox="0 0 520 300" aria-hidden="true">
-      <g fill="none" stroke="var(--accent)" stroke-width="1.2">
-        <circle cx="430" cy="150" r="30"/><circle cx="430" cy="150" r="60" opacity=".85"/>
-        <circle cx="430" cy="150" r="95" opacity=".65"/><circle cx="430" cy="150" r="135" opacity=".45"/>
-        <circle cx="430" cy="150" r="180" opacity=".3"/><circle cx="430" cy="150" r="230" opacity=".18"/>
-      </g>
-      <circle cx="430" cy="150" r="5" fill="var(--warm)"/>
-    </svg>
-    <div class="eyebrow">ÉTS MONTRÉAL · ARTS ET MÉTIERS · LABORATOIRE PULETS</div>
-    <h1>Alexis<br>Durand</h1>
-    <p class="lede">Étudiant-chercheur en <strong>maîtrise de génie mécanique</strong>. Je développe des méthodes d'imagerie par <strong>ultrasons</strong> et d'<strong>intelligence artificielle</strong> pour détecter et mesurer des fissures de 0,1&nbsp;mm dans des pièces aéronautiques.</p>
-    <div class="actions">
-      <a class="btn primary" href="mailto:durand.alexis83@gmail.com">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-        M'écrire
-      </a>
-      <a class="btn" href="https://www.linkedin.com/in/alexis-durand-3a077123a/" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.6 8.65 22 11.3 22 14.7V21h-4v-5.6c0-1.34-.03-3.06-1.86-3.06-1.87 0-2.15 1.46-2.15 2.96V21h-4V9Z"/></svg>
-        LinkedIn
-      </a>
-      <a class="btn" href="https://github.com/adurand83" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.23c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.49v-1.7c-2.78.62-3.37-1.37-3.37-1.37-.46-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.35 1.12 2.92.85.09-.66.35-1.12.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.64 1.03 2.76 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9v2.82c0 .27.18.6.69.49A10.2 10.2 0 0 0 22 12.23C22 6.58 17.52 2 12 2Z"/></svg>
-        GitHub
-      </a>
-      <a class="btn" href="cv-alexis-durand.pdf" download>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"/></svg>
-        CV (PDF)
-      </a>
-    </div>
-    <div class="loc">📍 Montréal (QC), Canada · Français · English (C1) · Español</div>
-  </div>
-</header>
-
-<main class="wrap">
-
-  <section id="recherche">
-    <h2><small>01 — RECHERCHE</small>Projet de maîtrise</h2>
-    <div class="research">
-      <h3>Détecter et mesurer des défauts débouchants de 0,1 mm par ultrasons</h3>
-      <p class="sub">Laboratoire PULETS, ÉTS Montréal · problématique industrielle issue de l'aéronautique · 2025 – aujourd'hui</p>
-      <div class="stats">
-        <div class="stat"><b>0,1 mm</b><span>taille des défauts visés</span></div>
-        <div class="stat"><b>≈ λ/3</b><span>sous la longueur d'onde à 10 MHz</span></div>
-        <div class="stat"><b>4 096</b><span>signaux par acquisition FMC</span></div>
-        <div class="stat"><b>64</b><span>éléments de la sonde</span></div>
-      </div>
-      <ul class="points">
-        <li>Algorithme de reconstruction d'image <b>TFM</b> (delay-and-sum) développé en MATLAB, sur des acquisitions Verasonics Vantage et OmniScan X3.</li>
-        <li>Comparaison de méthodes d'imagerie (TFM, PCI) pour des défauts plus petits que la longueur d'onde (λ = 0,31 mm).</li>
-        <li>Génération de données d'entraînement par simulation éléments finis (PogoPro) et par CIVA.</li>
-        <li>En cours : réseau <b>U-Net résiduel</b> (PyTorch) pour débruiter les images TFM, entraîné sur données simulées.</li>
-        <li>Projet présenté au LAFCUS.</li>
-      </ul>
-      <p class="gloss"><b>FMC</b> (Full Matrix Capture) : on enregistre le signal reçu par chaque élément pour chaque élément émetteur. <b>TFM</b> (Total Focusing Method) : on recombine ces signaux pour focaliser en chaque point de l'image. <b>PCI</b> (Phase Coherence Imaging) : variante qui pondère l'image par la cohérence de phase des signaux pour réduire le bruit.</p>
-    </div>
-  </section>
-
-  <section id="experience">
-    <h2><small>02 — EXPÉRIENCE</small>Parcours professionnel</h2>
-    <div class="item">
-      <div class="when">2024 – 2025</div>
-      <div>
-        <h3>Responsable capteurs et réseau</h3>
-        <div class="org">Hydrogadz — équipe étudiante de bateau à hydrogène, Aix-en-Provence</div>
-        <p>Conception et déploiement de la télémétrie embarquée : capteurs sur bus CAN reliés à un Raspberry Pi, transmission 4G et envoi des données par API vers un tableau de bord. Système de communication interne de l'équipe pendant le Monaco Energy Boat Challenge.</p>
-      </div>
-    </div>
-    <div class="item">
-      <div class="when">2024</div>
-      <div>
-        <h3>Ingénieur d'études</h3>
-        <div class="org">Junior-Entreprise AMJE, Aix-en-Provence</div>
-        <p>Conception et dimensionnement, pour une start-up, d'un prototype de vanne d'irrigation low-tech puis de sa version commercialisable.</p>
-      </div>
-    </div>
-    <div class="item">
-      <div class="when">2024</div>
-      <div>
-        <h3>Stagiaire exécutant</h3>
-        <div class="org">Airbus Helicopters — Prototypes et développement, Marignane</div>
-        <p>Fabrication et assemblage de prototypes en atelier pendant 5 semaines ; contribution au déploiement de la démarche 5S.</p>
-      </div>
-    </div>
-    <div class="item">
-      <div class="when">2020</div>
-      <div>
-        <h3>Animateur saisonnier</h3>
-        <div class="org">Parcabout, Montauroux</div>
-        <p>Accueil du public, consignes de sécurité et animation d'ateliers.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="formation">
-    <h2><small>03 — FORMATION</small>Études</h2>
-    <div class="item">
-      <div class="when">2025 – auj.</div>
-      <div>
-        <h3>Maîtrise en génie mécanique avec mémoire</h3>
-        <div class="org">École de technologie supérieure (ÉTS), Montréal</div>
-        <p>Laboratoire PULETS (piézoélectricité et ultrasons). Mention Génie+ (reconnaissance officielle de l'engagement étudiant).</p>
-      </div>
-    </div>
-    <div class="item">
-      <div class="when">2023 – auj.</div>
-      <div>
-        <h3>Diplôme d'ingénieur généraliste</h3>
-        <div class="org">Arts et Métiers (ENSAM), Aix-en-Provence — double diplôme ÉTS / ENSAM</div>
-        <p>Classement de 1re année : 63<sup>e</sup> sur 1 150.</p>
-      </div>
-    </div>
-    <div class="item">
-      <div class="when">2021 – 2023</div>
-      <div>
-        <h3>Classe préparatoire PTSI</h3>
-        <div class="org">Lycée Vauvenargues, Aix-en-Provence</div>
-      </div>
-    </div>
-    <div class="item">
-      <div class="when">2021</div>
-      <div>
-        <h3>Baccalauréat, mention Très bien, section européenne</h3>
-        <div class="org">Lycée Jules Ferry, Cannes</div>
-      </div>
-    </div>
-  </section>
-
-  <section id="competences">
-    <h2><small>04 — COMPÉTENCES</small>Boîte à outils</h2>
-    <div class="skills">
-      <div><h4>Programmation & IA</h4><div class="tags">
-        <span class="tag">MATLAB</span><span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">U-Net / CNN</span><span class="tag">Linux</span><span class="tag">HTML/CSS/JS</span>
-      </div></div>
-      <div><h4>Ultrasons & CND</h4><div class="tags">
-        <span class="tag">TFM</span><span class="tag">FMC</span><span class="tag">PCI</span><span class="tag">Verasonics Vantage</span><span class="tag">OmniScan X3</span><span class="tag">Sondes multiéléments</span>
-      </div></div>
-      <div><h4>Simulation & CAO</h4><div class="tags">
-        <span class="tag">PogoPro</span><span class="tag">CIVA</span><span class="tag">Abaqus</span><span class="tag">CATIA</span><span class="tag">3DEXPERIENCE</span>
-      </div></div>
-      <div><h4>Systèmes embarqués</h4><div class="tags">
-        <span class="tag">Raspberry Pi</span><span class="tag">Bus CAN</span><span class="tag">API</span>
-      </div></div>
-    </div>
-    <p style="margin-top:22px;color:var(--muted);font-size:14px">Certification Intelligence artificielle (réseaux de neurones, TensorFlow) — FCS Consulting, 2024</p>
-
-    <h2 style="margin-top:40px;font-size:22px">Langues</h2>
-    <div class="langs">
-      <div><b>Français</b><span>langue maternelle</span></div>
-      <div><b>Anglais</b><span>C1 · TOEIC 970/990 · 6 mois en Angleterre</span></div>
-      <div><b>Espagnol</b><span>intermédiaire</span></div>
-    </div>
-    <p style="margin-top:28px;color:var(--muted);font-size:14px">En dehors du labo : rugby, surf, escalade, snowboard.</p>
-  </section>
-
-  <section id="contact" style="border-top:none">
-    <div class="contact">
-      <div>
-        <h2>Discutons</h2>
-        <p>Stage, collaboration de recherche ou opportunité en CND / IA.</p>
-      </div>
-      <div class="actions">
-        <a class="btn primary" href="mailto:durand.alexis83@gmail.com">durand.alexis83@gmail.com</a>
-        <a class="btn" href="https://www.linkedin.com/in/alexis-durand-3a077123a/" target="_blank" rel="noopener">LinkedIn</a>
-      </div>
-    </div>
-  </section>
-
 </main>
-
-<footer class="wrap">© <span id="y"></span> Alexis Durand · Montréal</footer>
-
-<script>
-  document.getElementById('y').textContent = new Date().getFullYear();
-  const root = document.documentElement, btn = document.getElementById('themeBtn');
-  try { const t = localStorage.getItem('theme'); if (t) root.dataset.theme = t; } catch(e){}
-  btn.addEventListener('click', () => {
-    const dark = root.dataset.theme ? root.dataset.theme === 'dark'
-      : matchMedia('(prefers-color-scheme: dark)').matches;
-    root.dataset.theme = dark ? 'light' : 'dark';
-    try { localStorage.setItem('theme', root.dataset.theme); } catch(e){}
-  });
-</script>
 </body>
 </html>
